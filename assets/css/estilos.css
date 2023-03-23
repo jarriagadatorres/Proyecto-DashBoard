@@ -1,10 +1,83 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: darkblue;
 }
-
+/*
+header{
+    height: 10%;
+}
+body{
+    height: 80%;
+}
+footer{
+    height: 10%;
+}
+*/
 h2{
     color:white;
     text-align: center;
+}
+.contenedor{
+   display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+    margin: 10px;
+}
+.sub-contenedor{
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+
+#crypto-tabla{
+    flex-basis: 100px;
+    flex-grow: 1;
+    border: 1px gray solid;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    margin: 10px;
+ }
+#crypto-conversion{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+    margin: 10px;
+}
+#crypto-usd{
+    flex-basis: 100px;
+    flex-grow: 1;
+    border: 1px gray solid;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    color:white
+}
+#crypto-euro{
+    flex-basis: 100px;
+    flex-grow: 1;
+    border: 1px gray solid;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+}
+#crypto-clp{
+    flex-basis: 100px;
+    flex-grow: 1;
+    border: 1px gray solid;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+}
+#crypto-grafico{
+    flex-basis: 100%;
+    flex-grow:1;  
+    border: 1px gray solid;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    margin: 10px;
+
 }
