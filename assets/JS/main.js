@@ -36,13 +36,27 @@ async function LeerApiTop(crypto) {
         }
         document.getElementById('lista-tabla').innerHTM += `</tbody>`
 }
-function graficar(datos, tipo) {
-        switch (tipo) {
-                case 1:         //grafico de linea
+const graficar = () => {
+        const ctx = document.getElementById('grafico');
 
-                case 2:         // grafico de area
-                case 3:         //grafico de bvarras
-        }
+        new Chart(ctx, {
+                type: 'bar',
+                data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                                label: '# of Votes',
+                                data: [12, 19, 3, 5, 2, 3],
+                                borderWidth: 1
+                        }]
+                },
+                options: {
+                        scales: {
+                                y: {
+                                        beginAtZero: true
+                                }
+                        }
+                }
+        });
 };
 
 
@@ -60,3 +74,4 @@ async function LeerApiGrafico(crypto) {
 
 LeerApiMonedas('BTC')
 LeerApiTop()
+graficar()
