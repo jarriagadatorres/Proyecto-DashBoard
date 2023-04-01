@@ -8,8 +8,12 @@ body{
     background-color:rgb(223, 242, 248);
 }
 
+h1{
+    text-align: center;
+}
+
 h2{
-    color:darkblue;
+    color:black;
     text-align: center;
 }
 
@@ -50,7 +54,9 @@ h2{
     border-radius: 5px;
     background-color: darkblue;
     text-align: center;
-    color:white
+    color:white;
+    padding-top: 5px;
+    
 }
 
 #crypto-euro{
@@ -60,7 +66,8 @@ h2{
     border-radius: 5px;
     background-color: darkblue;
     text-align: center;
-    color:white
+    color:white;
+    padding-top: 5px;
 }
 
 #crypto-clp{
@@ -70,7 +77,8 @@ h2{
     border-radius: 5px;
     background-color: darkblue;
     text-align: center;
-    color:white
+    color:white;
+    padding-top: 5px;
 }
 
 #crypto-grafico{
@@ -84,12 +92,8 @@ h2{
 
 }
 
-.card-body{
-    background-color: rgb(14, 14, 48);
-}
-
 table{
-    background-color: gainsboro;
+    background-color: rgb(255, 255, 255);
 }
 
 #titulo-grafico{
@@ -99,6 +103,7 @@ table{
 footer{
     position: absolute;
     bottom: 0;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
     text-align: center;
 }
