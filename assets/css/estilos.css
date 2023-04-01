@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: darkblue;
+    /*background-color: darkblue;*/
 }
 /*
 header{
@@ -15,7 +15,7 @@ footer{
 }
 */
 h2{
-    color:white;
+    color:darkblue;
     text-align: center;
 }
 .contenedor{
@@ -51,7 +51,7 @@ h2{
     flex-grow: 1;
     border: 1px gray solid;
     border-radius: 5px;
-    background-color: white;
+    background-color: darkblue;
     text-align: center;
     color:white
 }
@@ -60,16 +60,18 @@ h2{
     flex-grow: 1;
     border: 1px gray solid;
     border-radius: 5px;
-    background-color: white;
+    background-color: darkblue;
     text-align: center;
+    color:white
 }
 #crypto-clp{
     flex-basis: 100px;
     flex-grow: 1;
     border: 1px gray solid;
     border-radius: 5px;
-    background-color: white;
+    background-color: darkblue;
     text-align: center;
+    color:white
 }
 #crypto-grafico{
     flex-basis: 100%;
