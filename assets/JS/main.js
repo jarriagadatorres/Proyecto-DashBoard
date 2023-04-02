@@ -13,7 +13,6 @@ async function LeerApiMonedas(crypto) {
         <h3>EUR$ ${datos.EUR}</h3>`;
         document.getElementById('crypto-clp').innerHTML = `
         <h3>CLP$ ${datos.CLP}</h3>`
-
 }
 
 
@@ -37,7 +36,7 @@ async function LeerApiTop(crypto) {
                 let porcentaje = datos.Data[i].DISPLAY.USD.CHANGEPCT24HOUR;
                 let bg = (porcentaje < 0) ? "red" : "blue"
                 document.getElementById('lista-tabla').innerHTML += `
-                <tr type:"button" onclick="graficar(${moneda})">
+                <tr id="${moneda}" type="button" onclick="LeerApiGrafico('${moneda}')">
                         <td>${logo}</td>
                         <td>${moneda}</td>
                         <td>${nombre}</td>
@@ -50,11 +49,15 @@ async function LeerApiTop(crypto) {
 
         }
         document.getElementById('lista-tabla').innerHTM += `</tbody>`
+        document.getElementById('grafico') = ''
+
 }
 const graficar = (valor, etiqueta, crypto, tipo) => {
         const ctx = document.getElementById('grafico');
-
-        new Chart(ctx, {
+        if (myChart) {
+                myChart.destroy();
+        }
+        myChart = new Chart(ctx, {
                 type: tipo,
                 data: {
                         labels: etiqueta,
@@ -94,8 +97,7 @@ async function LeerApiGrafico(crypto) {
         });
         graficar(valor, etiqueta, crypto, "line")
 }
-
+let myChart;
 LeerApiTop()
 LeerApiMonedas('BTC')
 LeerApiGrafico('ANKR')
-//graficar("datos2", "line")
