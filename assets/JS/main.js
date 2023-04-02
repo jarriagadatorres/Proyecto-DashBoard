@@ -10,7 +10,7 @@ async function LeerApiMonedas(crypto) {
         document.getElementById('crypto-usd').innerHTML = `
         <h3>USD$ ${datos.USD}</h3>`;
         document.getElementById('crypto-euro').innerHTML = `
-        <h3>EURO$ ${datos.EUR}</h3>`;
+        <h3>EUR$ ${datos.EUR}</h3>`;
         document.getElementById('crypto-clp').innerHTML = `
         <h3>CLP$ ${datos.CLP}</h3>`
 
@@ -50,6 +50,8 @@ const graficar = () => {
                         }]
                 },
                 options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
                         scales: {
                                 y: {
                                         beginAtZero: true
