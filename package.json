@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bootstrap-icons": "^1.10.3",
     "chart.js": "^4.2.1",
     "requirejs": "^2.3.6"
   }

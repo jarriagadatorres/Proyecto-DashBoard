@@ -6,6 +6,9 @@
 
 body{
     background-color:rgb(223, 242, 248);
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
 }
 
 h1{
@@ -93,6 +96,11 @@ h2{
     box-shadow: 10px 5px 5px grey;
 
 }
+button {
+    width: 35px;
+    background-color: transparent;
+    border: none;
+}
 
 table{
     background-color: rgb(255, 255, 255);
@@ -103,9 +111,3 @@ table{
     text-align: center;
 }
 
-footer{
-    position: absolute;
-    bottom: 0;
-    justify-content: space-around;
-    text-align: center;
-}
