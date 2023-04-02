@@ -25,10 +25,7 @@ async function LeerApiTop(crypto) {
                 .then(data => {
                         return data;
                 });
-                var myDate = new Date( 1680389820*1000)
 
-        console.log(myDate.getHours())
-        console.log(+myDate.getMinutes())
         document.getElementById('lista-tabla').innerHTM += '<tbody>';
         //                        <td><img src="https://www.cryptocompare.com${datos.data[i].DISPLAY.USD.IMAGEURL}"></td>
         for (let i = 0; i < 11; i++) {
@@ -38,31 +35,35 @@ async function LeerApiTop(crypto) {
                 let minimo = datos.Data[i].DISPLAY.USD.LOWDAY;
                 let maximo = datos.Data[i].DISPLAY.USD.HIGHDAY;
                 let porcentaje = datos.Data[i].DISPLAY.USD.CHANGEPCT24HOUR;
+                let bg = (porcentaje < 0) ? "red" : "blue"
                 document.getElementById('lista-tabla').innerHTML += `
-                <tr onclick="graficar(${moneda})">
+                <tr type:"button" onclick="graficar(${moneda})">
                         <td>${logo}</td>
                         <td>${moneda}</td>
                         <td>${nombre}</td>
                         <td>${minimo}</td>
                         <td>${maximo}</td>
-                        <td>${porcentaje}</td>
-                </tr>`
+                        <td style="color:${bg}">${porcentaje} </td>
+                </tr>
+                `
                 // crear eventListener en <tr>
 
         }
         document.getElementById('lista-tabla').innerHTM += `</tbody>`
 }
-const graficar = (datos,tipo) => {
+const graficar = (valor, etiqueta, crypto, tipo) => {
         const ctx = document.getElementById('grafico');
 
         new Chart(ctx, {
                 type: tipo,
                 data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        labels: etiqueta,
                         datasets: [{
-                                label: '# of Votes',
-                                data: [12, 19, 3, 5, 2, 3],
-                                borderWidth: 1
+                                label: crypto,
+                                data: valor,
+                                borderWidth: 1,
+                                fill: true,
+                                cubicInterpolationMode: 'monotone'
                         }]
                 },
                 options: {
@@ -85,11 +86,16 @@ async function LeerApiGrafico(crypto) {
                 .then(data => {
                         return data;
                 });
-
-        graficar(datos, "bar")
+        let valor = datos.Data.Data.map(e => e.volumefrom)
+        let etiqueta = datos.Data.Data.map(function (e) {
+                var myDate = new Date(e.time * 1000)
+                HoraMinuto = myDate.getHours() + ':' + myDate.getMinutes()
+                return HoraMinuto;
+        });
+        graficar(valor, etiqueta, crypto, "line")
 }
 
-
-LeerApiMonedas('BTC')
 LeerApiTop()
-graficar("datos2", "bar")
+LeerApiMonedas('BTC')
+LeerApiGrafico('ANKR')
+//graficar("datos2", "line")
