@@ -32,11 +32,11 @@ h2{
 #crypto-tabla{
     flex-basis: 100px;
     flex-grow: 1;
-    border: 1px gray solid;
     border-radius: 5px;
     background-color: white;
     text-align: center;
     margin: 10px;
+    box-shadow: 10px 5px 5px grey;
 }
 
 #crypto-conversion{
@@ -52,11 +52,11 @@ h2{
     flex-grow: 1;
     border: 1px gray solid;
     border-radius: 5px;
-    background-color: darkblue;
+    background-color: lightgrey;
     text-align: center;
-    color:white;
+    color:black;
     padding-top: 5px;
-    
+    box-shadow: 5px 5px 5px grey;
 }
 
 #crypto-euro{
@@ -64,10 +64,11 @@ h2{
     flex-grow: 1;
     border: 1px gray solid;
     border-radius: 5px;
-    background-color: darkblue;
+    background-color: lightgrey;
     text-align: center;
-    color:white;
+    color:black;
     padding-top: 5px;
+    box-shadow: 5px 5px 5px grey;
 }
 
 #crypto-clp{
@@ -75,25 +76,27 @@ h2{
     flex-grow: 1;
     border: 1px gray solid;
     border-radius: 5px;
-    background-color: darkblue;
+    background-color: lightgrey;
     text-align: center;
-    color:white;
+    color:black;
     padding-top: 5px;
+    box-shadow: 5px 5px 5px grey;
 }
 
 #crypto-grafico{
     flex-basis: 100%;
     flex-grow:1;  
-    border: 1px gray solid;
     border-radius: 5px;
     background-color: white;
     text-align: center;
     margin: 10px;
+    box-shadow: 10px 5px 5px grey;
 
 }
 
 table{
     background-color: rgb(255, 255, 255);
+
 }
 
 #titulo-grafico{
@@ -103,7 +106,6 @@ table{
 footer{
     position: absolute;
     bottom: 0;
-    display: flex;
     justify-content: space-around;
     text-align: center;
 }
