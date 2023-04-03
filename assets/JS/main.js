@@ -1,4 +1,3 @@
-
 async function LeerApiMonedas(crypto) {
 
         const url = `https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=USD,EUR,CLP`;
@@ -15,8 +14,7 @@ async function LeerApiMonedas(crypto) {
         <h3>CLP$ ${datos.CLP}</h3>`
 }
 
-
-async function LeerApiTop(crypto) {
+async function LeerApiTop() {
 
         const url = `https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?tsym=USD&page=1`;
         const datos = await fetch(url)
@@ -25,8 +23,8 @@ async function LeerApiTop(crypto) {
                         return data;
                 });
 
+        let crypto = datos.Data[0].CoinInfo.Name;
         document.getElementById('lista-tabla').innerHTM += '<tbody>';
-        //                        <td><img src="https://www.cryptocompare.com${datos.data[i].DISPLAY.USD.IMAGEURL}"></td>
         for (let i = 0; i < 11; i++) {
                 let logo = '<img src="https://www.cryptocompare.com' + datos.Data[i].CoinInfo.ImageUrl + '" width="40px" >'
                 let moneda = datos.Data[i].CoinInfo.Name;
@@ -43,15 +41,20 @@ async function LeerApiTop(crypto) {
                         <td>${minimo}</td>
                         <td>${maximo}</td>
                         <td style="color:${bg}">${porcentaje} </td>
-                </tr>
-                `
-                // crear eventListener en <tr>
+                </tr>`
 
         }
+        console.log(crypto)
         document.getElementById('lista-tabla').innerHTM += `</tbody>`
-        document.getElementById('grafico') = ''
+
+        LeerApiMonedas(crypto)
+        LeerApiGrafico(crypto)
 
 }
+
+
+
+
 const graficar = (valor, etiqueta, crypto, tipo) => {
         const ctx = document.getElementById('grafico');
         if (myChart) {
@@ -95,9 +98,16 @@ async function LeerApiGrafico(crypto) {
                 HoraMinuto = myDate.getHours() + ':' + myDate.getMinutes()
                 return HoraMinuto;
         });
-        graficar(valor, etiqueta, crypto, "line")
+        graficar(valor, etiqueta, crypto, tipo)
 }
+
+function tipografico(t) {
+        let tipo = t;
+        LeerApiGrafico(crypto)
+}
+let crypto;
 let myChart;
+let tipo = 'line';
 LeerApiTop()
-LeerApiMonedas('BTC')
-LeerApiGrafico('ANKR')
+//LeerApiMonedas(crypto)
+//LeerApiGrafico(crypto)
