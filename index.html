@@ -20,54 +20,56 @@
     <header>
         <h1>Proyecto DashBoard con Crypto Monedas</h1>
     </header>
-        <section class="contenedor">
-            <div class="sub-contenedor">
-                <section id="crypto-tabla">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>Tabla Top 10 Crypto Monedas</h2>
-                        </div>
-                        <div class="card-body" >
-                            <table id="lista-tabla" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Logo</th>
-                                        <th>Moneda</th>
-                                        <th>Nombre</th>
-                                        <th>Valor min en USD</th>
-                                        <th>Valor max en USD</th>
-                                        <th>%</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+    <section class="contenedor">
+        <div class="sub-contenedor">
+            <section id="crypto-tabla">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Tabla Top 10 Crypto Monedas</h2>
                     </div>
-                </section>
-            </div>
-            <div class="sub-contenedor">
-                <div id="crypto-conversion">
-                    <div id="crypto-usd"></div>
-                    <div id="crypto-euro"></div>
-                    <div id="crypto-clp"></div>
+                    <div class="card-body">
+                        <table id="lista-tabla" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Logo</th>
+                                    <th>Moneda</th>
+                                    <th>Nombre</th>
+                                    <th>Valor min en USD</th>
+                                    <th>Valor max en USD</th>
+                                    <th>%</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
-                <section>
-                    <div id="titulo-grafico">
-                        <h3>Trasacciones Úiltimas 3hrs</h3>
-                    </div>
-                    <div id="crypto-grafico" class="card">
+            </section>
+        </div>
+        <div class="sub-contenedor">
+            <div id="crypto-conversion">
+                <div id="crypto-usd"></div>
+                <div id="crypto-euro"></div>
+                <div id="crypto-clp"></div>
+            </div>
+            <section>
+                <div id="titulo-grafico">
+                    <h3>Trasacciones Úiltimas 3hrs</h3>
+                </div>
+                <div id="crypto-grafico" class="card">
 
-                        <div id="menu-grafico" class="card-header">
-                            <button type="submit" onclick="tipografico('line')"><i class="bi bi-bezier2"></i></button>
-                            <button onclick="tipografico('bar')"><i class="bi bi-bar-chart-fill"></i></button>
-                            <button onclick="tipografico('line')"><i class="bi bi-graph-up"></i></button>
-                        Volumen de Ventas</div>
-                        <canvas id="grafico" class="card-body"></canvas>
+                    <div id="menu-grafico" class="card-header">
+                        <!---   <button onclick="tipografico('line')"><i class="bi bi-bezier2"></i></button>
+                                <button onclick="tipografico('bar')"><i class="bi bi-bar-chart-fill"></i></button>
+                                <button onclick="tipografico('line')"><i class="bi bi-graph-up"></i></button>
+                        -->
+                        Volumen de Ventas
                     </div>
-                </section>
-        </section>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="./assets/JS/main.js"></script>
-        
+                    <canvas id="grafico" class="card-body"></canvas>
+                </div>
+            </section>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./assets/JS/main.js"></script>
+
 </body>
 
 <footer>

@@ -1,3 +1,4 @@
+
 async function LeerApiMonedas(crypto) {
 
         const url = `https://min-api.cryptocompare.com/data/price?fsym=${crypto}&tsyms=USD,EUR,CLP`;
@@ -22,7 +23,7 @@ async function LeerApiTop() {
                 .then(data => {
                         return data;
                 });
-
+    
         let crypto = datos.Data[0].CoinInfo.Name;
         document.getElementById('lista-tabla').innerHTM += '<tbody>';
         for (let i = 0; i < 11; i++) {
@@ -42,15 +43,15 @@ async function LeerApiTop() {
                         <td>${maximo}</td>
                         <td style="color:${bg}">${porcentaje} </td>
                 </tr>`
-
+    
         }
         console.log(crypto)
         document.getElementById('lista-tabla').innerHTM += `</tbody>`
-
+    
         LeerApiMonedas(crypto)
         LeerApiGrafico(crypto)
-
-}
+    
+    }
 
 
 
@@ -98,6 +99,7 @@ async function LeerApiGrafico(crypto) {
                 HoraMinuto = myDate.getHours() + ':' + myDate.getMinutes()
                 return HoraMinuto;
         });
+        LeerApiMonedas(crypto)
         graficar(valor, etiqueta, crypto, tipo)
 }
 
@@ -110,4 +112,4 @@ let myChart;
 let tipo = 'line';
 LeerApiTop()
 //LeerApiMonedas(crypto)
-//LeerApiGrafico(crypto)
+LeerApiGrafico('BTC')
