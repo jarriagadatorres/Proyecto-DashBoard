@@ -35,7 +35,7 @@ async function LeerApiTop() {
                 let porcentaje = datos.Data[i].DISPLAY.USD.CHANGEPCT24HOUR;
                 let bg = (porcentaje < 0) ? "red" : "blue"
                 document.getElementById('lista-tabla').innerHTML += `
-                <tr id="${moneda}" type="button" onclick="LeerApiGrafico('${moneda}')">
+                <tr  onclick="LeerApiGrafico('${moneda}')">
                         <td>${logo}</td>
                         <td>${moneda}</td>
                         <td>${nombre}</td>
