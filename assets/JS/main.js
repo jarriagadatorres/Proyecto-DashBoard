@@ -1,6 +1,9 @@
 let crypto;
 let myChart;
 let tipo = 'line';
+let datos;
+let etiqueta;
+let valor;
 
 async function LeerApiMonedas(crypto) {
 
@@ -27,7 +30,7 @@ async function LeerApiTop() {
                         return data;
                 });
 
-        let crypto = datos.Data[0].CoinInfo.Name;
+        crypto = datos.Data[0].CoinInfo.Name;
         document.getElementById('lista-tabla').innerHTM += '<tbody>';
         for (let i = 0; i < 11; i++) {
                 let logo = '<img src="https://www.cryptocompare.com' + datos.Data[i].CoinInfo.ImageUrl + '" width="40px" >'
@@ -57,15 +60,15 @@ const graficar = (valor, etiqueta, crypto, tipo) => {
                 myChart.destroy();
         }
         myChart = new Chart(ctx, {
-                type: (tipo==='line2') ? 'line' : tipo,
+                type: (tipo === 'line2') ? 'line' : tipo,
                 data: {
                         labels: etiqueta,
                         datasets: [{
                                 label: crypto,
                                 data: valor,
                                 borderWidth: 1,
-                                fill: (tipo==='line') ? true : false,
-                                cubicInterpolationMode:  (tipo==='line') ? 'monotone' : 'default'
+                                fill: (tipo === 'line') ? true : false,
+                                cubicInterpolationMode: (tipo === 'line') ? 'monotone' : 'default'
                         }]
                 },
                 options: {
@@ -81,15 +84,15 @@ const graficar = (valor, etiqueta, crypto, tipo) => {
 };
 
 async function LeerApiGrafico(moneda) {
-        crypto=moneda;
+        crypto = moneda;
         const url = `https://min-api.cryptocompare.com/data/v2/histominute?fsym=${crypto}&tsym=USD&limit=60&aggregate=3&e=CCCAGG`;
         const datos = await fetch(url)
                 .then(response => response.json())
                 .then(data => {
                         return data;
                 });
-        let valor = datos.Data.Data.map(e => e.volumefrom)
-        let etiqueta = datos.Data.Data.map(function (e) {
+        valor = datos.Data.Data.map(e => e.volumefrom)
+        etiqueta = datos.Data.Data.map(function (e) {
                 var myDate = new Date(e.time * 1000)
                 HoraMinuto = myDate.getHours() + ':' + myDate.getMinutes()
                 return HoraMinuto;
@@ -97,12 +100,6 @@ async function LeerApiGrafico(moneda) {
         LeerApiMonedas(crypto)
         graficar(valor, etiqueta, crypto, tipo)
 }
-
-function tipografico(t) {
-        let tipo = t;
-        LeerApiGrafico(crypto)
-}
-
 
 function tipografico(t) {
         tipo = t;
