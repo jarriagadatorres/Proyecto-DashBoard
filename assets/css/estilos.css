@@ -1,7 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-    /*background-color: darkblue;*/
 }
 
 body{
@@ -104,6 +103,7 @@ button {
 
 table{
     background-color: rgb(255, 255, 255);
+    cursor: pointer;;
 }
 
 #titulo-grafico{

@@ -1,3 +1,6 @@
+let crypto;
+let myChart;
+let tipo = 'line';
 
 async function LeerApiMonedas(crypto) {
 
@@ -23,7 +26,7 @@ async function LeerApiTop() {
                 .then(data => {
                         return data;
                 });
-    
+
         let crypto = datos.Data[0].CoinInfo.Name;
         document.getElementById('lista-tabla').innerHTM += '<tbody>';
         for (let i = 0; i < 11; i++) {
@@ -43,18 +46,10 @@ async function LeerApiTop() {
                         <td>${maximo}</td>
                         <td style="color:${bg}">${porcentaje} </td>
                 </tr>`
-    
+
         }
-        console.log(crypto)
         document.getElementById('lista-tabla').innerHTM += `</tbody>`
-    
-        LeerApiMonedas(crypto)
-        LeerApiGrafico(crypto)
-    
-    }
-
-
-
+}
 
 const graficar = (valor, etiqueta, crypto, tipo) => {
         const ctx = document.getElementById('grafico');
@@ -62,15 +57,15 @@ const graficar = (valor, etiqueta, crypto, tipo) => {
                 myChart.destroy();
         }
         myChart = new Chart(ctx, {
-                type: tipo,
+                type: (tipo==='line2') ? 'line' : tipo,
                 data: {
                         labels: etiqueta,
                         datasets: [{
                                 label: crypto,
                                 data: valor,
                                 borderWidth: 1,
-                                fill: true,
-                                cubicInterpolationMode: 'monotone'
+                                fill: (tipo==='line') ? true : false,
+                                cubicInterpolationMode:  (tipo==='line') ? 'monotone' : 'default'
                         }]
                 },
                 options: {
@@ -85,8 +80,8 @@ const graficar = (valor, etiqueta, crypto, tipo) => {
         });
 };
 
-
-async function LeerApiGrafico(crypto) {
+async function LeerApiGrafico(moneda) {
+        crypto=moneda;
         const url = `https://min-api.cryptocompare.com/data/v2/histominute?fsym=${crypto}&tsym=USD&limit=60&aggregate=3&e=CCCAGG`;
         const datos = await fetch(url)
                 .then(response => response.json())
@@ -107,9 +102,11 @@ function tipografico(t) {
         let tipo = t;
         LeerApiGrafico(crypto)
 }
-let crypto;
-let myChart;
-let tipo = 'line';
+
+
+function tipografico(t) {
+        tipo = t;
+        LeerApiGrafico(crypto)
+}
 LeerApiTop()
-//LeerApiMonedas(crypto)
 LeerApiGrafico('BTC')
