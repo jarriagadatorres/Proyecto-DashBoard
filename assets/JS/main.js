@@ -20,7 +20,6 @@ async function LeerApiMonedas(crypto) {
         document.getElementById('crypto-clp').innerHTML = `
         <h3>CLP$ ${datos.CLP}</h3>`
 }
-
 async function LeerApiTop() {
 
         const url = `https://min-api.cryptocompare.com/data/top/totaltoptiervolfull?tsym=USD&page=1`;
@@ -30,7 +29,7 @@ async function LeerApiTop() {
                         return data;
                 });
 
-        crypto = datos.Data[0].CoinInfo.Name;
+        //crypto = datos.Data[0].CoinInfo.Name;
         document.getElementById('lista-tabla').innerHTM += '<tbody>';
         for (let i = 0; i < 11; i++) {
                 let logo = '<img src="https://www.cryptocompare.com' + datos.Data[i].CoinInfo.ImageUrl + '" width="40px" >'
@@ -54,7 +53,7 @@ async function LeerApiTop() {
         document.getElementById('lista-tabla').innerHTM += `</tbody>`
 }
 
-const graficar = (valor, etiqueta, crypto, tipo) => {
+const graficar = (valor, etiqueta, moneda, tipo) => {
         const ctx = document.getElementById('grafico');
         if (myChart) {
                 myChart.destroy();
@@ -64,7 +63,7 @@ const graficar = (valor, etiqueta, crypto, tipo) => {
                 data: {
                         labels: etiqueta,
                         datasets: [{
-                                label: crypto,
+                                label: moneda,
                                 data: valor,
                                 borderWidth: 1,
                                 fill: (tipo === 'line') ? true : false,
